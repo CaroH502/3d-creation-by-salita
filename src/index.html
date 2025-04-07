@@ -9,17 +9,37 @@
   </head>
   <body class="bg-white text-gray-800 font-sans">
 
-    <!-- ✅ NAVIGATION -->
-    <header class="bg-white shadow">
+    <!-- ✅ NAVIGATION RESPONSIVE -->
+    <header class="bg-white shadow sticky top-0 z-50">
       <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-        <h1 class="text-2xl font-bold text-blue-600">MonProjet</h1>
-        <nav class="space-x-4">
-          <a href="#benefices" class="text-gray-700 hover:text-blue-500">Bénéfices</a>
-          <a href="#services" class="text-gray-700 hover:text-blue-500">Services</a>
-          <a href="#workflow" class="text-gray-700 hover:text-blue-500">Workflow</a>
-          <a href="#realisations" class="text-gray-700 hover:text-blue-500">Réalisations</a>
-          <a href="#a-propos" class="text-gray-700 hover:text-blue-500">À propos</a>
-        </nav>
+        <h1 class="text-2xl font-bold text-blue-600">3D<span class="text-pink-500">Creation</span></h1>
+
+        <!-- Burger icon -->
+        <button id="burger" class="md:hidden flex flex-col gap-1 w-6 h-6 relative z-50">
+          <span id="line1" class="block h-0.5 bg-blue-600 transition-all duration-300 ease-in-out"></span>
+          <span id="line2" class="block h-0.5 bg-blue-600 transition-all duration-300 ease-in-out"></span>
+          <span id="line3" class="block h-0.5 bg-blue-600 transition-all duration-300 ease-in-out"></span>
+        </button>
+
+        <!-- Menu -->
+        <nav
+        id="menu"
+        class="hidden flex flex-col gap-4 items-start 
+               absolute top-full left-0 right-0 bg-white px-6 py-4 shadow 
+               lg:static lg:flex-row lg:items-center lg:gap-6 lg:bg-transparent lg:px-0 lg:py-0 lg:shadow-none"
+      >
+        <a href="#benefices" class="text-gray-700 hover:text-blue-600 w-full lg:w-auto">Bénéfices</a>
+        <a href="#services" class="text-gray-700 hover:text-blue-600 w-full lg:w-auto">Services</a>
+        <a href="#workflow" class="text-gray-700 hover:text-blue-600 w-full lg:w-auto">Workflow</a>
+        <a href="#realisations" class="text-gray-700 hover:text-blue-600 w-full lg:w-auto">Réalisations</a>
+        <a href="#a-propos" class="text-gray-700 hover:text-blue-600 w-full lg:w-auto">À propos</a>
+        <a href="#contact" class="text-white bg-blue-600 px-3 py-1 rounded hover:bg-blue-700 text-center lg:ml-4">
+          Devis
+        </a>
+      </nav>
+      
+      
+      
       </div>
     </header>
 
@@ -111,7 +131,7 @@
     </section>
 
     <!-- ✅ CALL TO ACTION -->
-    <section class="bg-blue-600 text-white py-16 text-center">
+    <section id="contact" class="bg-blue-600 text-white py-16 text-center">
       <h3 class="text-3xl font-bold mb-4">Prêt à démarrer votre projet ?</h3>
       <p class="mb-6">Contactez-nous dès aujourd’hui pour une consultation gratuite.</p>
       <button class="bg-white text-blue-600 px-6 py-2 rounded hover:bg-blue-100">Nous contacter</button>
@@ -131,6 +151,5 @@
         <p>&copy; 2025 MonProjet. Tous droits réservés.</p>
       </div>
     </footer>
-
   </body>
 </html>
