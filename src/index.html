@@ -1,17 +1,136 @@
-<!doctype html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="./script.js" defer></script>
-  <link href="./output.css" rel="stylesheet">
-</head>
-<body>
-  <h1 class="text-3xl font-bold underline">
-    Hello caro!
-  </h1>
-  <button onclick="direBonjour()" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
-    Clique-moi
-  </button>  
-</body>
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mon Projet Tailwind</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body class="bg-white text-gray-800 font-sans">
+
+    <!-- ✅ NAVIGATION -->
+    <header class="bg-white shadow">
+      <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+        <h1 class="text-2xl font-bold text-blue-600">MonProjet</h1>
+        <nav class="space-x-4">
+          <a href="#benefices" class="text-gray-700 hover:text-blue-500">Bénéfices</a>
+          <a href="#services" class="text-gray-700 hover:text-blue-500">Services</a>
+          <a href="#workflow" class="text-gray-700 hover:text-blue-500">Workflow</a>
+          <a href="#realisations" class="text-gray-700 hover:text-blue-500">Réalisations</a>
+          <a href="#a-propos" class="text-gray-700 hover:text-blue-500">À propos</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- ✅ HERO -->
+    <section class="bg-blue-600 text-white py-20 text-center">
+      <div class="max-w-3xl mx-auto px-4">
+        <h2 class="text-4xl font-bold mb-4">Bienvenue sur notre plateforme</h2>
+        <p class="text-lg mb-6">Une solution moderne pour booster vos projets web</p>
+        <button onclick="direBonjour()" class="bg-white text-blue-600 px-6 py-2 rounded font-semibold hover:bg-blue-100 transition">
+          Essayez maintenant
+        </button>
+      </div>
+    </section>
+
+    <!-- ✅ BÉNÉFICES -->
+    <section id="benefices" class="py-16 bg-gray-50">
+      <div class="max-w-6xl mx-auto px-4">
+        <h3 class="text-3xl font-bold text-center mb-10">Les bénéfices</h3>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="bg-white p-6 rounded shadow text-center">
+            <h4 class="text-xl font-semibold mb-2">Rapidité</h4>
+            <p>Un développement ultra-rapide grâce à Tailwind CSS.</p>
+          </div>
+          <div class="bg-white p-6 rounded shadow text-center">
+            <h4 class="text-xl font-semibold mb-2">Simplicité</h4>
+            <p>Code lisible, propre et facile à maintenir.</p>
+          </div>
+          <div class="bg-white p-6 rounded shadow text-center">
+            <h4 class="text-xl font-semibold mb-2">Personnalisable</h4>
+            <p>Adapté à tous les types de projets.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ✅ SERVICES -->
+    <section id="services" class="py-16">
+      <div class="max-w-6xl mx-auto px-4">
+        <h3 class="text-3xl font-bold text-center mb-10">Nos services</h3>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="bg-blue-50 p-6 rounded shadow">
+            <h4 class="font-semibold text-lg mb-2">Développement Web</h4>
+            <p>Création de sites modernes et responsive.</p>
+          </div>
+          <div class="bg-blue-50 p-6 rounded shadow">
+            <h4 class="font-semibold text-lg mb-2">Design UI/UX</h4>
+            <p>Expérience utilisateur soignée avec des designs impactants.</p>
+          </div>
+          <div class="bg-blue-50 p-6 rounded shadow">
+            <h4 class="font-semibold text-lg mb-2">Maintenance</h4>
+            <p>Support technique et évolutivité continue.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ✅ WORKFLOW -->
+    <section id="workflow" class="bg-gray-100 py-16">
+      <div class="max-w-6xl mx-auto px-4">
+        <h3 class="text-3xl font-bold text-center mb-10">Notre workflow</h3>
+        <ol class="space-y-6">
+          <li><span class="font-bold">1.</span> Analyse des besoins</li>
+          <li><span class="font-bold">2.</span> Maquette & prototypage</li>
+          <li><span class="font-bold">3.</span> Développement</li>
+          <li><span class="font-bold">4.</span> Livraison & suivi</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ✅ RÉALISATIONS -->
+    <section id="realisations" class="py-16">
+      <div class="max-w-6xl mx-auto px-4">
+        <h3 class="text-3xl font-bold text-center mb-10">Nos réalisations</h3>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="bg-gray-100 p-4 rounded shadow">
+            <img src="https://via.placeholder.com/300x200" alt="Projet 1" class="mb-2 rounded" />
+            <h4 class="font-semibold">Projet Alpha</h4>
+          </div>
+          <div class="bg-gray-100 p-4 rounded shadow">
+            <img src="https://via.placeholder.com/300x200" alt="Projet 2" class="mb-2 rounded" />
+            <h4 class="font-semibold">Projet Beta</h4>
+          </div>
+          <div class="bg-gray-100 p-4 rounded shadow">
+            <img src="https://via.placeholder.com/300x200" alt="Projet 3" class="mb-2 rounded" />
+            <h4 class="font-semibold">Projet Gamma</h4>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ✅ CALL TO ACTION -->
+    <section class="bg-blue-600 text-white py-16 text-center">
+      <h3 class="text-3xl font-bold mb-4">Prêt à démarrer votre projet ?</h3>
+      <p class="mb-6">Contactez-nous dès aujourd’hui pour une consultation gratuite.</p>
+      <button class="bg-white text-blue-600 px-6 py-2 rounded hover:bg-blue-100">Nous contacter</button>
+    </section>
+
+    <!-- ✅ À PROPOS -->
+    <section id="a-propos" class="py-16 bg-gray-50">
+      <div class="max-w-4xl mx-auto px-4 text-center">
+        <h3 class="text-3xl font-bold mb-4">À propos</h3>
+        <p>Nous sommes une équipe passionnée par la création d’expériences web modernes et performantes. De la conception au déploiement, on s’occupe de tout avec soin et efficacité.</p>
+      </div>
+    </section>
+
+    <!-- ✅ FOOTER -->
+    <footer class="bg-gray-800 text-white py-6">
+      <div class="max-w-6xl mx-auto px-4 text-center">
+        <p>&copy; 2025 MonProjet. Tous droits réservés.</p>
+      </div>
+    </footer>
+
+  </body>
 </html>
