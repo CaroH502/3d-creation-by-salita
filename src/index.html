@@ -4,47 +4,54 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mon Projet Tailwind</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="../dist/output.css" rel="stylesheet">
     <script src="script.js" defer></script>
   </head>
   <body class="bg-white text-gray-800 font-sans">
+     <!-- Navbar -->
+     <nav class="bg-white p-4 shadow-md">
+      <div class="container mx-auto flex items-center justify-between">
+          <!-- Logo (right for desktop) -->
+          <div class="text-xl font-bold">
+              <a href="#">Logo</a>
+          </div>
 
-    <!-- ✅ NAVIGATION RESPONSIVE -->
-    <header class="bg-white shadow sticky top-0 z-50">
-      <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-        <h1 class="text-2xl font-bold text-blue-600">3D<span class="text-pink-500">Creation</span></h1>
+          <!-- Desktop Links -->
+          <div class="hidden md:flex space-x-8 items-center">
+              <a href="#services" class="text-gray-700 hover:text-blue-500">Services</a>
+              <a href="#realisation" class="text-gray-700 hover:text-blue-500">Réalisation</a>
+              <a href="#apropos" class="text-gray-700 hover:text-blue-500">À propos</a>
+              <a href="#contact" class="text-gray-700 hover:text-blue-500">Contact</a>
+              <a href="#devis" class="bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-600 transition">Obtenir un devis</a>
+          </div>
 
-        <!-- Burger icon -->
-        <button id="burger" class="md:hidden flex flex-col gap-1 w-6 h-6 relative z-50">
-          <span id="line1" class="block h-0.5 bg-blue-600 transition-all duration-300 ease-in-out"></span>
-          <span id="line2" class="block h-0.5 bg-blue-600 transition-all duration-300 ease-in-out"></span>
-          <span id="line3" class="block h-0.5 bg-blue-600 transition-all duration-300 ease-in-out"></span>
-        </button>
-
-        <!-- Menu -->
-        <nav
-        id="menu"
-        class="hidden flex flex-col gap-4 items-start 
-               absolute top-full left-0 right-0 bg-white px-6 py-4 shadow 
-               lg:static lg:flex-row lg:items-center lg:gap-6 lg:bg-transparent lg:px-0 lg:py-0 lg:shadow-none"
-      >
-        <a href="#benefices" class="text-gray-700 hover:text-blue-600 w-full lg:w-auto">Bénéfices</a>
-        <a href="#services" class="text-gray-700 hover:text-blue-600 w-full lg:w-auto">Services</a>
-        <a href="#workflow" class="text-gray-700 hover:text-blue-600 w-full lg:w-auto">Workflow</a>
-        <a href="#realisations" class="text-gray-700 hover:text-blue-600 w-full lg:w-auto">Réalisations</a>
-        <a href="#a-propos" class="text-gray-700 hover:text-blue-600 w-full lg:w-auto">À propos</a>
-        <a href="#contact" class="text-white bg-blue-600 px-3 py-1 rounded hover:bg-blue-700 text-center lg:ml-4">
-          Devis
-        </a>
-      </nav>
-      
-      
-      
+          <!-- Burger Menu (visible only on mobile/tablet) -->
+          <div class="md:hidden">
+              <button id="burgerMenu" class="text-gray-700 focus:outline-none">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                  </svg>
+              </button>
+          </div>
       </div>
+
+      <!-- Mobile menu (hidden by default) -->
+      <div id="mobileMenu" class="md:hidden hidden bg-white shadow-lg p-4">
+          <div class="space-y-4">
+              <a href="#services" class="block text-gray-700 hover:text-blue-500">Services</a>
+              <a href="#realisation" class="block text-gray-700 hover:text-blue-500">Réalisation</a>
+              <a href="#apropos" class="block text-gray-700 hover:text-blue-500">À propos</a>
+              <a href="#contact" class="block text-gray-700 hover:text-blue-500">Contact</a>
+              <a href="#devis" class="block bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-600 transition">Obtenir un devis</a>
+          </div>
+      </div>
+  </nav>
+   
+      
     </header>
 
     <!-- ✅ HERO -->
-    <section class="bg-blue-600 text-white py-20 text-center">
+    <section class="bg-primary text-white py-20 text-center">
       <div class="max-w-3xl mx-auto px-4">
         <h2 class="text-4xl font-bold mb-4">Bienvenue sur notre plateforme</h2>
         <p class="text-lg mb-6">Une solution moderne pour booster vos projets web</p>
@@ -54,102 +61,106 @@
       </div>
     </section>
 
-    <!-- ✅ BÉNÉFICES -->
-    <section id="benefices" class="py-16 bg-gray-50">
+    <!-- ✅ Bénéfices -->
+    <div id="benefices" class="py-16 bg-gray-50">
       <div class="max-w-6xl mx-auto px-4">
-        <h3 class="text-3xl font-bold text-center mb-10">Les bénéfices</h3>
+        <h3 class="text-3xl font-bold text-center mb-10">Pourquoi choisir 3D Création by Salita ?</h3>
         <div class="grid md:grid-cols-3 gap-8">
           <div class="bg-white p-6 rounded shadow text-center">
-            <h4 class="text-xl font-semibold mb-2">Rapidité</h4>
-            <p>Un développement ultra-rapide grâce à Tailwind CSS.</p>
+            <h4 class="text-xl font-semibold mb-2">Immersion</h4>
+            <p>Des projections 3D conçues pour une meilleure visualisation de votre projet et une expérience immersive</p>
           </div>
           <div class="bg-white p-6 rounded shadow text-center">
-            <h4 class="text-xl font-semibold mb-2">Simplicité</h4>
-            <p>Code lisible, propre et facile à maintenir.</p>
+            <h4 class="text-xl font-semibold mb-2">Transparence</h4>
+            <p>Une communication honnête, une relation de confiance et un accompagnement sur mesure car chaque projet est unique</p>
           </div>
           <div class="bg-white p-6 rounded shadow text-center">
-            <h4 class="text-xl font-semibold mb-2">Personnalisable</h4>
-            <p>Adapté à tous les types de projets.</p>
+            <h4 class="text-xl font-semibold mb-2">Abordable</h4>
+            <p>Des tarifs attractifs et forfaitaires parce que s'offrir des perspectives 3D ne devrait pas être un luxe</p>
           </div>
         </div>
       </div>
-    </section>
+    </div>
 
     <!-- ✅ SERVICES -->
     <section id="services" class="py-16">
       <div class="max-w-6xl mx-auto px-4">
-        <h3 class="text-3xl font-bold text-center mb-10">Nos services</h3>
-        <div class="grid md:grid-cols-3 gap-8">
-          <div class="bg-blue-50 p-6 rounded shadow">
-            <h4 class="font-semibold text-lg mb-2">Développement Web</h4>
-            <p>Création de sites modernes et responsive.</p>
-          </div>
-          <div class="bg-blue-50 p-6 rounded shadow">
-            <h4 class="font-semibold text-lg mb-2">Design UI/UX</h4>
-            <p>Expérience utilisateur soignée avec des designs impactants.</p>
-          </div>
-          <div class="bg-blue-50 p-6 rounded shadow">
-            <h4 class="font-semibold text-lg mb-2">Maintenance</h4>
-            <p>Support technique et évolutivité continue.</p>
-          </div>
+        <h3 class="text-3xl font-bold text-center mb-10">Nos services de modélisation 3D</h3>
+        <div class="text-center">
+            <p>Transformez votre projet de construction, rénovation ou décoration avec 3D Creation by Salita, qui donne vie à vos idées par des images 3D réalistes et immersives</p>
         </div>
       </div>
     </section>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
 
     <!-- ✅ WORKFLOW -->
-    <section id="workflow" class="bg-gray-100 py-16">
+    <div id="workflow" class="py-16 bg-gray-50">
       <div class="max-w-6xl mx-auto px-4">
-        <h3 class="text-3xl font-bold text-center mb-10">Notre workflow</h3>
-        <ol class="space-y-6">
-          <li><span class="font-bold">1.</span> Analyse des besoins</li>
-          <li><span class="font-bold">2.</span> Maquette & prototypage</li>
-          <li><span class="font-bold">3.</span> Développement</li>
-          <li><span class="font-bold">4.</span> Livraison & suivi</li>
-        </ol>
+        <h3 class="text-3xl font-bold text-center mb-10">Obtenez votre modélisation 3D en seulement 3 étapes </h3>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="bg-white p-6 rounded shadow text-center">
+            <h4 class="text-xl font-semibold mb-2">Demander un devis</h4>
+            <p>Obtenez un devis personnalisé en remplissant notre formulaire avec vos besoins spécifiques pour une solution sur mesure</p>
+          </div>
+          <div class="bg-white p-6 rounded shadow text-center">
+            <h4 class="text-xl font-semibold mb-2">Étude du dossier</h4>
+            <p>Discutez de votre projet 3D avec nous pour une réalisation fidèle à la réalité, en nous fournissant plans et documents nécessaires</p>
+          </div>
+          <div class="bg-white p-6 rounded shadow text-center">
+            <h4 class="text-xl font-semibold mb-2">Réception du produit</h4>
+            <p>Recevez vos images 3D dans les délais convenus, avec des modifications gratuites jusqu'à satisfaction totale</p>
+          </div>
+        </div>
       </div>
-    </section>
+    </div>
 
     <!-- ✅ RÉALISATIONS -->
     <section id="realisations" class="py-16">
       <div class="max-w-6xl mx-auto px-4">
         <h3 class="text-3xl font-bold text-center mb-10">Nos réalisations</h3>
-        <div class="grid md:grid-cols-3 gap-6">
-          <div class="bg-gray-100 p-4 rounded shadow">
+        <div class="mb-10 text-center">
+          <p>Découvrez nos modélisations 3D réalistes et immersives. Chaque projet repose sur une collaboration de confiance, alliant précision et créativité pour transformer votre vision en réalité.</p>
+      </div>
+        <div class="">
+          <div class=" mb-10 bg-gray-100 p-4 rounded shadow">
             <img src="https://via.placeholder.com/300x200" alt="Projet 1" class="mb-2 rounded" />
             <h4 class="font-semibold">Projet Alpha</h4>
           </div>
-          <div class="bg-gray-100 p-4 rounded shadow">
-            <img src="https://via.placeholder.com/300x200" alt="Projet 2" class="mb-2 rounded" />
-            <h4 class="font-semibold">Projet Beta</h4>
-          </div>
-          <div class="bg-gray-100 p-4 rounded shadow">
-            <img src="https://via.placeholder.com/300x200" alt="Projet 3" class="mb-2 rounded" />
-            <h4 class="font-semibold">Projet Gamma</h4>
-          </div>
         </div>
+        <div class="text-center">
+          <p>Suivez-nous sur instagram pour voir plus de modélisations 3D
+            @3dcreation_by_salita</p>
       </div>
     </section>
 
     <!-- ✅ CALL TO ACTION -->
-    <section id="contact" class="bg-blue-600 text-white py-16 text-center">
-      <h3 class="text-3xl font-bold mb-4">Prêt à démarrer votre projet ?</h3>
-      <p class="mb-6">Contactez-nous dès aujourd’hui pour une consultation gratuite.</p>
-      <button class="bg-white text-blue-600 px-6 py-2 rounded hover:bg-blue-100">Nous contacter</button>
-    </section>
+    <div id="cta" class="bg-blue-600 text-white py-16 text-center">
+      <h3 class="text-3xl font-bold mb-4">Vous avez un projet en cours ?</h3>
+      <p class="mb-6">Contactez-nous dès aujourd’hui pour demander votre devis sans engagement et donnez vie à vos plans en 3D !</p>
+      <button class="bg-white text-blue-600 px-6 py-2 rounded hover:bg-blue-100">Demander un devis</button>
+    </div>
 
     <!-- ✅ À PROPOS -->
     <section id="a-propos" class="py-16 bg-gray-50">
       <div class="max-w-4xl mx-auto px-4 text-center">
         <h3 class="text-3xl font-bold mb-4">À propos</h3>
-        <p>Nous sommes une équipe passionnée par la création d’expériences web modernes et performantes. De la conception au déploiement, on s’occupe de tout avec soin et efficacité.</p>
+        <p>Je suis ravie de vous annoncer le lancement de 3D Creation by Salita, mon entreprise indépendante !
+
+          Avec plusieurs années d'expérience dans le notariat spécialisée en immobilier et droit foncier, je mets à votre disposition mes compétences pour donner vie à vos projets en 3D. Mon expertise dans ce domaine m'aide à comprendre vos besoins et à réaliser des plans précis.
+          
+          Ancienne conseillère à la clientèle dans une entreprise de construction de villas, ma collaboration étroite avec les dessinateurs en bâtiments a fait grandir en moi l’envie de dessiner et conceptualiser des plans 3D. Aujourd'hui, je m'engage pleinement à offrir un service de modélisation 3D pour votre projet.
+          
+          Faites le premier pas vers votre projet 3D avec 3D Creation by Salita !</p>
       </div>
     </section>
 
     <!-- ✅ FOOTER -->
-    <footer class="bg-gray-800 text-white py-6">
+     <section>
+    <footer id="contact" class="bg-gray-800 text-white py-6">
       <div class="max-w-6xl mx-auto px-4 text-center">
         <p>&copy; 2025 MonProjet. Tous droits réservés.</p>
       </div>
     </footer>
+  </section>
   </body>
 </html>
