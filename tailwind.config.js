@@ -4,11 +4,18 @@
   theme: {
     extend: {
       colors: {
+        'teal': {
+                  500: '#00617B',
+                  600: '#0A6978',
+                  700: '#085967'
+              },
+              'pink': {
+                  100: '#FFF2F4',
+                  200: '#FFE1E1',
+                  300: '#FFD2D2'
+              },
         primary: '#00617B',    // Exemple : bleu principal
         secondary: '#FFF2F4',  // Exemple : violet secondaire
-        //accent: '#F59E0B',     // Exemple : orange accent
-        //background: '#F3F4F6', // Exemple : fond clair
-        //text: '#1F2937',       // Exemple : texte foncé
       }
     },
   },
