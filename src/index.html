@@ -1,166 +1,462 @@
 <!DOCTYPE html>
-<html class="scroll-smooth" lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mon Projet Tailwind</title>
-    <link href="../dist/output.css" rel="stylesheet">
-    <script src="script.js" defer></script>
-  </head>
-  <body class="bg-white text-gray-800 font-sans">
-     <!-- Navbar -->
-     <nav class="bg-white p-4 shadow-md">
-      <div class="container mx-auto flex items-center justify-between">
-          <!-- Logo (right for desktop) -->
-          <div class="text-xl font-bold">
-              <a href="#">Logo</a>
-          </div>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Creation by Salita</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'teal': {
+                            500: '#0D7A8A',
+                            600: '#0A6978',
+                            700: '#085967'
+                        },
+                        'pink': {
+                            100: '#FFF0F0',
+                            200: '#FFE1E1',
+                            300: '#FFD2D2'
+                        }
+                    },
+                    fontFamily: {
+                        'sans': ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .feature-icon {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .feature-icon.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .carousel {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        .carousel-item {
+            flex: 0 0 100%;
+        }
+        
+        .carousel-control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+        }
+        
+        .carousel-prev {
+            left: 10px;
+        }
+        
+        .carousel-next {
+            right: 10px;
+        }
+        
+        .carousel-indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+        }
+        
+        .carousel-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+        }
+        
+        .carousel-indicator.active {
+            background-color: #0D7A8A;
+        }
+        
+        .mobile-menu {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu fixed top-0 left-0 w-full h-full bg-white z-50 flex flex-col p-8">
+        <div class="flex justify-between items-center mb-12">
+            <div class="logo">
+                <img src="logo.png" alt="3D Creation by Salita" class="h-16">
+            </div>
+            <button id="close-menu" class="text-teal-500 text-3xl">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <nav class="flex flex-col space-y-8 text-2xl text-teal-500">
+            <a href="#services" class="hover:text-teal-700">Services</a>
+            <a href="#realisations" class="hover:text-teal-700">Réalisations</a>
+            <a href="#about" class="hover:text-teal-700">A propos</a>
+            <a href="#contact" class="hover:text-teal-700">Contact</a>
+        </nav>
+        <div class="mt-12">
+            <a href="#devis" class="inline-block border-2 border-teal-500 text-teal-500 px-6 py-3 text-lg font-medium hover:bg-teal-500 hover:text-white transition duration-300">
+                Obtenir un devis
+            </a>
+        </div>
+    </div>
 
-          <!-- Desktop Links -->
-          <div class="hidden md:flex space-x-8 items-center">
-              <a href="#services" class="text-gray-700 hover:text-blue-500">Services</a>
-              <a href="#realisation" class="text-gray-700 hover:text-blue-500">Réalisation</a>
-              <a href="#apropos" class="text-gray-700 hover:text-blue-500">À propos</a>
-              <a href="#contact" class="text-gray-700 hover:text-blue-500">Contact</a>
-              <a href="#devis" class="bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-600 transition">Obtenir un devis</a>
-          </div>
-
-          <!-- Burger Menu (visible only on mobile/tablet) -->
-          <div class="md:hidden">
-              <button id="burgerMenu" class="text-gray-700 focus:outline-none">
-                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                  </svg>
-              </button>
-          </div>
-      </div>
-
-      <!-- Mobile menu (hidden by default) -->
-      <div id="mobileMenu" class="md:hidden hidden bg-white shadow-lg p-4">
-          <div class="space-y-4">
-              <a href="#services" class="block text-gray-700 hover:text-blue-500">Services</a>
-              <a href="#realisation" class="block text-gray-700 hover:text-blue-500">Réalisation</a>
-              <a href="#apropos" class="block text-gray-700 hover:text-blue-500">À propos</a>
-              <a href="#contact" class="block text-gray-700 hover:text-blue-500">Contact</a>
-              <a href="#devis" class="block bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-600 transition">Obtenir un devis</a>
-          </div>
-      </div>
-  </nav>
-   
-      
+    <!-- Header -->
+    <header class="bg-white py-4 px-6 md:px-12 lg:px-20 flex justify-between items-center">
+        <div class="logo">
+            <img src="logo.png" alt="3D Creation by Salita" class="h-12 md:h-16">
+        </div>
+        <nav class="hidden md:flex items-center space-x-8">
+            <a href="#services" class="text-teal-500 hover:text-teal-700">Services</a>
+            <a href="#realisations" class="text-teal-500 hover:text-teal-700">Réalisations</a>
+            <a href="#about" class="text-teal-500 hover:text-teal-700">A propos</a>
+            <a href="#contact" class="text-teal-500 hover:text-teal-700">Contact</a>
+            <a href="#devis" class="border-2 border-teal-500 text-teal-500 px-4 py-2 hover:bg-teal-500 hover:text-white transition duration-300">
+                Obtenir un devis
+            </a>
+        </nav>
+        <button id="open-menu" class="md:hidden text-teal-500 text-2xl">
+            <i class="fas fa-bars"></i>
+        </button>
     </header>
 
-    <!-- ✅ HERO -->
-    <section class="bg-primary text-white py-20 text-center">
-      <div class="max-w-3xl mx-auto px-4">
-        <h2 class="text-4xl font-bold mb-4">Bienvenue sur notre plateforme</h2>
-        <p class="text-lg mb-6">Une solution moderne pour booster vos projets web</p>
-        <button onclick="direBonjour()" class="bg-white text-blue-600 px-6 py-2 rounded font-semibold hover:bg-blue-100 transition">
-          Essayez maintenant
-        </button>
-      </div>
+    <!-- Hero Section -->
+    <section class="bg-pink-100 py-12 md:py-20 px-6 md:px-12 lg:px-20">
+        <div class="flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-8 md:mb-0">
+                <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-teal-500 mb-4">
+                    Des projections qui reflètent la réalité !
+                </h1>
+                <a href="#devis" class="inline-block bg-teal-500 text-white px-6 py-3 mt-4 hover:bg-teal-600 transition duration-300">
+                    Demander un devis
+                </a>
+            </div>
+            <div class="md:w-1/2">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Maison 3D" class="w-full rounded-md shadow-lg">
+            </div>
+        </div>
     </section>
 
-    <!-- ✅ Bénéfices -->
-    <div id="benefices" class="py-16 bg-gray-50">
-      <div class="max-w-6xl mx-auto px-4">
-        <h3 class="text-3xl font-bold text-center mb-10">Pourquoi choisir 3D Création by Salita ?</h3>
-        <div class="grid md:grid-cols-3 gap-8">
-          <div class="bg-white p-6 rounded shadow text-center">
-            <h4 class="text-xl font-semibold mb-2">Immersion</h4>
-            <p>Des projections 3D conçues pour une meilleure visualisation de votre projet et une expérience immersive</p>
-          </div>
-          <div class="bg-white p-6 rounded shadow text-center">
-            <h4 class="text-xl font-semibold mb-2">Transparence</h4>
-            <p>Une communication honnête, une relation de confiance et un accompagnement sur mesure car chaque projet est unique</p>
-          </div>
-          <div class="bg-white p-6 rounded shadow text-center">
-            <h4 class="text-xl font-semibold mb-2">Abordable</h4>
-            <p>Des tarifs attractifs et forfaitaires parce que s'offrir des perspectives 3D ne devrait pas être un luxe</p>
-          </div>
+    <!-- Why Choose Us Section -->
+    <section class="py-16 px-6 md:px-12 lg:px-20">
+        <h2 class="text-2xl md:text-3xl font-bold text-center text-teal-500 mb-12">
+            Pourquoi choisir 3D Creation by Salita ?
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-pink-100 p-8 rounded-lg text-center feature-icon">
+                <div class="w-20 h-20 mx-auto mb-4 bg-white rounded-full flex items-center justify-center">
+                    <i class="fas fa-cube text-3xl text-teal-500"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-teal-500 mb-2">Immersion</h3>
+                <p class="text-gray-600">Des projections 3D complètes pour une immersion totale dans votre projet et une expérience immersive.</p>
+            </div>
+            <div class="bg-pink-100 p-8 rounded-lg text-center feature-icon">
+                <div class="w-20 h-20 mx-auto mb-4 bg-white rounded-full flex items-center justify-center">
+                    <i class="fas fa-eye text-3xl text-teal-500"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-teal-500 mb-2">Transparence</h3>
+                <p class="text-gray-600">Une communication honnête, une tarification claire et un engagement sur les délais pour une collaboration en toute confiance.</p>
+            </div>
+            <div class="bg-pink-100 p-8 rounded-lg text-center feature-icon">
+                <div class="w-20 h-20 mx-auto mb-4 bg-white rounded-full flex items-center justify-center">
+                    <i class="fas fa-check-circle text-3xl text-teal-500"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-teal-500 mb-2">Abordable</h3>
+                <p class="text-gray-600">Des tarifs adaptés et facilement accessibles pour tous vos projets, de la maison aux plus grands.</p>
+            </div>
         </div>
-      </div>
-    </div>
+    </section>
 
-    <!-- ✅ SERVICES -->
-    <section id="services" class="py-16">
-      <div class="max-w-6xl mx-auto px-4">
-        <h3 class="text-3xl font-bold text-center mb-10">Nos services de modélisation 3D</h3>
+    <!-- Services Section -->
+    <section id="services" class="py-16 px-6 md:px-12 lg:px-20 bg-white">
+        <h2 class="text-2xl md:text-3xl font-bold text-center text-teal-500 mb-4">
+            Nos services de modélisation 3D
+        </h2>
+        <p class="text-center text-gray-600 mb-12 max-w-3xl mx-auto">
+            Transformez votre vision en construction, décoration ou aménagement. Nos services de modélisation 3D vous aident à visualiser vos idées avant leur réalisation.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="overflow-hidden rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Aménagements Intérieurs" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold text-teal-500">Aménagements Intérieurs</h3>
+                </div>
+            </div>
+            <div class="overflow-hidden rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Villas & Maisons" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold text-teal-500">Villas & Maisons</h3>
+                </div>
+            </div>
+            <div class="overflow-hidden rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Immeubles & Bâtiments" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold text-teal-500">Immeubles & Bâtiments</h3>
+                </div>
+            </div>
+            <div class="overflow-hidden rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                <img src="https://images.unsplash.com/photo-1600573472550-8090b5e0745e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Espaces Extérieurs & Piscines" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold text-teal-500">Espaces Extérieurs & Piscines</h3>
+                </div>
+            </div>
+            <div class="overflow-hidden rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Quartiers & Aménagements urbains" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold text-teal-500">Quartiers & Aménagements urbains</h3>
+                </div>
+            </div>
+            <div class="flex justify-center items-center">
+                <a href="#devis" class="inline-block bg-teal-500 text-white px-6 py-3 rounded hover:bg-teal-600 transition duration-300">
+                    En savoir plus
+                </a>
+            </div>
+        </div>
+        
+        <div class="mt-16">
+            <h3 class="text-xl font-semibold text-teal-500 mb-4">
+                Confiez-nous la modélisation 3D de votre projet pour un rendu précis et réaliste
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Modélisation 3D" class="w-full rounded-lg shadow-md">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Modélisation 3D" class="w-full rounded-lg shadow-md">
+            </div>
+            <div class="text-right mt-4">
+                <a href="#" class="text-teal-500 hover:underline">Voir toutes</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="py-16 px-6 md:px-12 lg:px-20 bg-pink-100">
+        <h2 class="text-2xl md:text-3xl font-bold text-center text-teal-500 mb-12">
+            Obtenez votre modélisation 3D en seulement 3 étapes
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-white p-8 rounded-lg text-center">
+                <div class="w-12 h-12 mx-auto mb-4 bg-teal-500 rounded-full flex items-center justify-center text-white font-bold">
+                    1
+                </div>
+                <h3 class="text-xl font-semibold text-teal-500 mb-2">Demander un devis</h3>
+                <p class="text-gray-600">Contactez-nous en décrivant votre projet et vos besoins. Nous vous répondrons sous 24h pour une solution sur mesure.</p>
+            </div>
+            <div class="bg-white p-8 rounded-lg text-center">
+                <div class="w-12 h-12 mx-auto mb-4 bg-teal-500 rounded-full flex items-center justify-center text-white font-bold">
+                    2
+                </div>
+                <h3 class="text-xl font-semibold text-teal-500 mb-2">Envoi de votre projet</h3>
+                <p class="text-gray-600">Une fois le devis validé, envoyez-nous vos plans, photos, mesures et toute information nécessaire pour un rendu fidèle et réaliste.</p>
+            </div>
+            <div class="bg-white p-8 rounded-lg text-center">
+                <div class="w-12 h-12 mx-auto mb-4 bg-teal-500 rounded-full flex items-center justify-center text-white font-bold">
+                    3
+                </div>
+                <h3 class="text-xl font-semibold text-teal-500 mb-2">Réception du projet</h3>
+                <p class="text-gray-600">Nous vous livrons votre modélisation 3D dans les délais convenus. Modifications possibles jusqu'à votre satisfaction totale.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Realizations Section -->
+    <section id="realisations" class="py-16 px-6 md:px-12 lg:px-20">
+        <h2 class="text-2xl md:text-3xl font-bold text-center text-teal-500 mb-12">
+            Nos réalisations 3D
+        </h2>
+        <p class="text-center text-gray-600 mb-12 max-w-3xl mx-auto">
+            Découvrez nos modélisations 3D réalistes et innovantes. Chaque projet reflète notre engagement à transformer vos idées en réalité visuelle.
+        </p>
+        
+        <!-- Carousel -->
+        <div class="carousel mb-12">
+            <div class="carousel-inner">
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Réalisation 1" class="w-full h-96 object-cover rounded-lg">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Réalisation 2" class="w-full h-96 object-cover rounded-lg">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Réalisation 3" class="w-full h-96 object-cover rounded-lg">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1600573472550-8090b5e0745e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Réalisation 4" class="w-full h-96 object-cover rounded-lg">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Réalisation 5" class="w-full h-96 object-cover rounded-lg">
+                </div>
+            </div>
+            <div class="carousel-control carousel-prev">
+                <i class="fas fa-chevron-left text-teal-500"></i>
+            </div>
+            <div class="carousel-control carousel-next">
+                <i class="fas fa-chevron-right text-teal-500"></i>
+            </div>
+            <div class="carousel-indicators">
+                <div class="carousel-indicator active"></div>
+                <div class="carousel-indicator"></div>
+                <div class="carousel-indicator"></div>
+                <div class="carousel-indicator"></div>
+                <div class="carousel-indicator"></div>
+            </div>
+        </div>
+        
         <div class="text-center">
-            <p>Transformez votre projet de construction, rénovation ou décoration avec 3D Creation by Salita, qui donne vie à vos idées par des images 3D réalistes et immersives</p>
+            <p class="mb-4">Toutes nos images sont designées pour une utilisation 3D</p>
+            <a href="#contact" class="inline-block bg-teal-500 text-white px-6 py-3 rounded hover:bg-teal-600 transition duration-300">
+                Parlons de votre projet
+            </a>
         </div>
-      </div>
-    </section>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
-
-    <!-- ✅ WORKFLOW -->
-    <div id="workflow" class="py-16 bg-gray-50">
-      <div class="max-w-6xl mx-auto px-4">
-        <h3 class="text-3xl font-bold text-center mb-10">Obtenez votre modélisation 3D en seulement 3 étapes </h3>
-        <div class="grid md:grid-cols-3 gap-8">
-          <div class="bg-white p-6 rounded shadow text-center">
-            <h4 class="text-xl font-semibold mb-2">Demander un devis</h4>
-            <p>Obtenez un devis personnalisé en remplissant notre formulaire avec vos besoins spécifiques pour une solution sur mesure</p>
-          </div>
-          <div class="bg-white p-6 rounded shadow text-center">
-            <h4 class="text-xl font-semibold mb-2">Étude du dossier</h4>
-            <p>Discutez de votre projet 3D avec nous pour une réalisation fidèle à la réalité, en nous fournissant plans et documents nécessaires</p>
-          </div>
-          <div class="bg-white p-6 rounded shadow text-center">
-            <h4 class="text-xl font-semibold mb-2">Réception du produit</h4>
-            <p>Recevez vos images 3D dans les délais convenus, avec des modifications gratuites jusqu'à satisfaction totale</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ✅ RÉALISATIONS -->
-    <section id="realisations" class="py-16">
-      <div class="max-w-6xl mx-auto px-4">
-        <h3 class="text-3xl font-bold text-center mb-10">Nos réalisations</h3>
-        <div class="mb-10 text-center">
-          <p>Découvrez nos modélisations 3D réalistes et immersives. Chaque projet repose sur une collaboration de confiance, alliant précision et créativité pour transformer votre vision en réalité.</p>
-      </div>
-        <div class="">
-          <div class=" mb-10 bg-gray-100 p-4 rounded shadow">
-            <img src="https://via.placeholder.com/300x200" alt="Projet 1" class="mb-2 rounded" />
-            <h4 class="font-semibold">Projet Alpha</h4>
-          </div>
-        </div>
-        <div class="text-center">
-          <p>Suivez-nous sur instagram pour voir plus de modélisations 3D
-            @3dcreation_by_salita</p>
-      </div>
     </section>
 
-    <!-- ✅ CALL TO ACTION -->
-    <div id="cta" class="bg-blue-600 text-white py-16 text-center">
-      <h3 class="text-3xl font-bold mb-4">Vous avez un projet en cours ?</h3>
-      <p class="mb-6">Contactez-nous dès aujourd’hui pour demander votre devis sans engagement et donnez vie à vos plans en 3D !</p>
-      <button class="bg-white text-blue-600 px-6 py-2 rounded hover:bg-blue-100">Demander un devis</button>
-    </div>
-
-    <!-- ✅ À PROPOS -->
-    <section id="a-propos" class="py-16 bg-gray-50">
-      <div class="max-w-4xl mx-auto px-4 text-center">
-        <h3 class="text-3xl font-bold mb-4">À propos</h3>
-        <p>Je suis ravie de vous annoncer le lancement de 3D Creation by Salita, mon entreprise indépendante !
-
-          Avec plusieurs années d'expérience dans le notariat spécialisée en immobilier et droit foncier, je mets à votre disposition mes compétences pour donner vie à vos projets en 3D. Mon expertise dans ce domaine m'aide à comprendre vos besoins et à réaliser des plans précis.
-          
-          Ancienne conseillère à la clientèle dans une entreprise de construction de villas, ma collaboration étroite avec les dessinateurs en bâtiments a fait grandir en moi l’envie de dessiner et conceptualiser des plans 3D. Aujourd'hui, je m'engage pleinement à offrir un service de modélisation 3D pour votre projet.
-          
-          Faites le premier pas vers votre projet 3D avec 3D Creation by Salita !</p>
-      </div>
+    <!-- CTA Section -->
+    <section class="py-16 px-6 md:px-12 lg:px-20 bg-pink-100">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-2xl md:text-3xl font-bold text-teal-500 mb-6">
+                Vous avez un projet en cours ?
+            </h2>
+            <p class="text-gray-600 mb-8">
+                Contactez-nous dès aujourd'hui pour découvrir comment nos services de modélisation 3D peuvent vous aider à concrétiser votre vision.
+            </p>
+            <a href="#devis" class="inline-block bg-teal-500 text-white px-8 py-4 rounded-md text-lg font-medium hover:bg-teal-600 transition duration-300">
+                Demander un devis
+            </a>
+        </div>
     </section>
 
-    <!-- ✅ FOOTER -->
-     <section>
-    <footer id="contact" class="bg-gray-800 text-white py-6">
-      <div class="max-w-6xl mx-auto px-4 text-center">
-        <p>&copy; 2025 MonProjet. Tous droits réservés.</p>
-      </div>
+    <!-- About Section -->
+    <section id="about" class="py-16 px-6 md:px-12 lg:px-20">
+        <h2 class="text-2xl md:text-3xl font-bold text-center text-teal-500 mb-12">
+            À propos de l'entreprise
+        </h2>
+        <div class="flex flex-col md:flex-row items-center gap-12">
+            <div class="md:w-1/3">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Fondatrice" class="w-full rounded-lg shadow-md">
+            </div>
+            <div class="md:w-2/3">
+                <p class="text-gray-600 mb-4">
+                    Fondée en 2018, 3D Creation by Salita est née de la passion pour l'architecture et le design 3D. Notre mission est de rendre la visualisation 3D accessible à tous.
+                </p>
+                <p class="text-gray-600 mb-4">
+                    Nous apportons à chaque projet d'architecture une vision artistique et innovante en utilisant les dernières technologies 3D pour créer des rendus photoréalistes qui capturent l'essence et l'ambiance de vos espaces.
+                </p>
+                <p class="text-gray-600 mb-4">
+                    Avec plus de 200 projets réalisés, notre équipe combine expertise technique et sensibilité créative pour donner vie à vos idées. Chaque modélisation est conçue avec précision et attention aux détails.
+                </p>
+                <p class="text-gray-600">
+                    Faites le premier pas vers une visualisation claire de votre projet en contactant 3D Creation by Salita aujourd'hui !
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 px-6 md:px-12 lg:px-20 bg-pink-100">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <h2 class="text-2xl md:text-3xl font-bold text-teal-500 mb-6">
+                        Contact
+                    </h2>
+                    <p class="text-gray-600 mb-4">
+                        <i class="fas fa-envelope mr-2 text-teal-500"></i> contact@3dcreation.fr
+                    </p>
+                    <p class="text-gray-600 mb-4">
+                        <i class="fas fa-phone mr-2 text-teal-500"></i> +33 6 12 34 56 78
+                    </p>
+                    <p class="text-gray-600 mb-8">
+                        <i class="fas fa-map-marker-alt mr-2 text-teal-500"></i> Lyon - France<br>
+                        Lundi - Vendredi<br>
+                        9:00 - 18:00
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-teal-500 hover:text-teal-700">
+                            <i class="fab fa-facebook-f text-xl"></i>
+                        </a>
+                        <a href="#" class="text-teal-500 hover:text-teal-700">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-teal-500 hover:text-teal-700">
+                            <i class="fab fa-linkedin-in text-xl"></i>
+                        </a>
+                        <a href="#" class="text-teal-500 hover:text-teal-700">
+                            <i class="fab fa-pinterest text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2" id="devis">
+                    <div class="bg-white p-8 rounded-lg shadow-md">
+                        <h3 class="text-xl font-semibold text-teal-500 mb-4">
+                            Demande de devis
+                        </h3>
+                        <form>
+                            <div class="mb-4">
+                                <input type="text" placeholder="Nom" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500">
+                            </div>
+                            <div class="mb-4">
+                                <input type="email" placeholder="Email" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500">
+                            </div>
+                            <div class="mb-4">
+                                <input type="tel" placeholder="Téléphone" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500">
+                            </div>
+                            <div class="mb-4">
+                                <textarea placeholder="Votre projet" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-teal-500 text-white py-3 rounded-md hover:bg-teal-600 transition duration-300">
+                                Envoyer
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white py-8 px-6 md:px-12 lg:px-20 border-t">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0">
+                <img src="logo.png" alt="3D Creation by Salita" class="h-12">
+            </div>
+            <div class="text-sm text-gray-500">
+                &copy; 2023 3D Creation by Salita. Tous droits réservés.
+            </div>
+        </div>
     </footer>
-  </section>
-  </body>
-</html>
