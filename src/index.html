@@ -170,28 +170,28 @@
         .figma-container {
             max-width: 1440px;
             margin: 0 auto;
-            padding-left: 1rem;
-            padding-right: 1rem;
+            padding-left: 3rem;
+            padding-right: 3rem;
         }
 
         @media (min-width: 640px) {
             .figma-container {
-                padding-left: 2rem;
-                padding-right: 2rem;
+                padding-left: 4rem;
+                padding-right: 4rem;
             }
         }
 
         @media (min-width: 768px) {
             .figma-container {
-                padding-left: 3rem;
-                padding-right: 3rem;
+                padding-left: 5rem;
+                padding-right: 5rem;
             }
         }
 
         @media (min-width: 1024px) {
             .figma-container {
-                padding-left: 4rem;
-                padding-right: 4rem;
+                padding-left: 6rem;
+                padding-right: 6rem;
             }
 
         }
@@ -483,54 +483,59 @@
 
 
 
-    <!-- Process Section -->
-    <section class="py-8 sm:py-12 md:py-16 mb-8 sm:mb-16 md:mb-24 lg:mb-32 xl:mb-40">
-        <div class="figma-container">
-            <!-- Titre -->
-            <h2
-                class="text-xl sm:text-2xl md:text-3xl text-center text-teal-500 mb-6 sm:mb-8 md:mb-10 lg:mb-12 xl:mb-14">
-                Obtenez votre modélisation 3D en seulement 3 étapes
-            </h2>
+<!-- Process Section -->
+<section class="relative py-8 sm:py-12 md:py-16 mb-8 sm:mb-16 md:mb-24 lg:mb-32 xl:mb-40">
+  <!-- Bandeau rose responsive -->
+  <div
+    class="absolute top-1/2 -translate-y-1/2 h-1/2 w-full bg-pink-100 z-0
+           lg:top-[187px] lg:translate-y-0 lg:h-[100px]
+           xl:top-[195px]">
+  </div>
 
-            <!-- Étapes -->
-            <div class="figma-grid">
-                <!-- Étape 1 -->
-                <div class="col-span-12 lg:col-span-4 flex flex-col items-center text-center p-4 sm:p-6 rounded-lg">
-                    <img src="./images/Chiffre-1.svg" alt="Étape 1"
-                        class="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 mb-3" />
-                    <p class="label text-lg sm:text-xl mb-4 sm:mb-6">Demander un devis</p>
-                    <p class="text-sm sm:text-base">
-                        Contactez-nous en décrivant votre projet et vos besoins. Nous vous répondrons sous 24h pour une
-                        solution sur mesure.
-                    </p>
-                </div>
+  <div class="figma-container relative z-10">
+    <!-- Titre -->
+    <h2 class="text-xl sm:text-2xl md:text-3xl text-center text-teal-500 mb-6 sm:mb-8 md:mb-10 lg:mb-12 xl:mb-14">
+      Obtenez votre modélisation 3D en seulement 3 étapes
+    </h2>
 
-                <!-- Étape 2 -->
-                <div class="col-span-12 lg:col-span-4 flex flex-col items-center text-center p-4 sm:p-6 rounded-lg">
-                    <img src="./images/Chiffre-2.svg" alt="Étape 2"
-                        class="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 mb-3" />
-                    <p class="label text-lg sm:text-xl mb-4 sm:mb-6">Envoi de votre projet</p>
-                    <p class="text-sm sm:text-base">
-                        Une fois le devis validé, envoyez-nous vos plans, photos, mesures et toute information
-                        nécessaire
-                        pour un rendu fidèle.
-                    </p>
-                </div>
+    <!-- Étapes -->
+    <div class="figma-grid">
+      <!-- Étape 1 -->
+      <div class="bg-white lg:bg-transparent col-span-12 lg:col-span-4 flex flex-col items-center text-center p-4 sm:p-6">
+        <img src="./images/Chiffre-1.svg" alt="Étape 1"
+             class="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 mb-3" />
+        <p class="label text-lg sm:text-xl mb-4 sm:mb-6">Demander un devis</p>
+        <p class="text-sm sm:text-base">
+          Contactez-nous en décrivant votre projet et vos besoins. Nous vous répondrons sous 24h pour une
+          solution sur mesure.
+        </p>
+      </div>
 
-                <!-- Étape 3 -->
-                <div class="col-span-12 lg:col-span-4 flex flex-col items-center text-center p-4 sm:p-6 rounded-lg ">
-                    <img src="./images/Chiffre-3.svg" alt="Étape 3"
-                        class="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 mb-3" />
-                    <p class="label text-lg sm:text-xl mb-4 sm:mb-6">Réception du projet</p>
-                    <p class="text-sm sm:text-base">
-                        Nous vous livrons votre modélisation 3D dans les délais convenus. Modifications possibles
-                        jusqu'à
-                        satisfaction.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
+      <!-- Étape 2 -->
+      <div class="bg-white lg:bg-transparent col-span-12 lg:col-span-4 flex flex-col items-center text-center p-4 sm:p-6">
+        <img src="./images/Chiffre-2.svg" alt="Étape 2"
+             class="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 mb-3" />
+        <p class="label text-lg sm:text-xl mb-4 sm:mb-6">Envoi de votre projet</p>
+        <p class="text-sm sm:text-base">
+          Une fois le devis validé, envoyez-nous vos plans, photos, mesures et toute information
+          nécessaire pour un rendu fidèle.
+        </p>
+      </div>
+
+      <!-- Étape 3 -->
+      <div class="bg-white lg:bg-transparent col-span-12 lg:col-span-4 flex flex-col items-center text-center p-4 sm:p-6">
+        <img src="./images/Chiffre-3.svg" alt="Étape 3"
+             class="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 mb-3" />
+        <p class="label text-lg sm:text-xl mb-4 sm:mb-6">Réception du projet</p>
+        <p class="text-sm sm:text-base">
+          Nous vous livrons votre modélisation 3D dans les délais convenus. Modifications possibles
+          jusqu'à satisfaction.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
 
     <!-- Realizations Section -->
     <section id="realisations" class="mb-8 sm:mb-16 md:mb-24 lg:mb-32 xl:mb-40">
