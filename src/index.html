@@ -18,13 +18,14 @@
                         'teal': {
                             500: '#0D7A8A',
                             600: '#0A6978',
-                            700: '#085967'
+                            700: '#085967',
                         },
                         'pink': {
                             100: '#FFF0F0',
                             200: '#FFE1E1',
                             300: '#FFD2D2',
-                            400: '#E594A3'
+                            400: '#E594A3',
+                            500: '#DA7C8E',
                         }
                     },
                     spacing: {
@@ -137,19 +138,18 @@
         }
 
         .carousel-indicators {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
             display: flex;
+            justify-content: center;
             gap: 8px;
+            margin-top: 1rem;
+            margin-bottom: 3rem;
         }
 
         .carousel-indicator {
             width: 10px;
             height: 10px;
             border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.5);
+            background-color: rgba(170, 201, 205, 0.5);
             cursor: pointer;
         }
 
@@ -219,6 +219,72 @@
             }
         }
 
+        a.btn-1 {
+            position: relative;
+            background-color: #0D7A8A;
+            transition: background 0.3s ease;
+            border: none;
+        }
+
+        /* Bordures horizontales */
+        a.btn-1::before,
+        a.btn-1::after {
+            content: "";
+            height: 2px;
+            width: 0;
+            position: absolute;
+            background: #dffbff;
+            /* teal foncé */
+            transition: all 0.3s linear;
+        }
+
+        a.btn-1::before {
+            top: 0;
+            right: 0;
+            transition-delay: 0.2s;
+        }
+
+        a.btn-1::after {
+            bottom: 0;
+            left: 0;
+            transition-delay: 0.2s;
+        }
+
+        /* Bordures verticales : appliquées au span (pleinement étendu) */
+        a.btn-1 span:first-child::before,
+        a.btn-1 span:first-child::after {
+            content: "";
+            width: 2px;
+            height: 0;
+            position: absolute;
+            background: #dffbff;
+            transition: all 0.3s linear;
+        }
+
+        a.btn-1 span:first-child::before {
+            left: 0;
+            top: 0;
+            transition-delay: 0s;
+        }
+
+        a.btn-1 span:first-child::after {
+            right: 0;
+            bottom: 0;
+            transition-delay: 0s;
+        }
+
+        /* Hover */
+        a.btn-1:hover::before,
+        a.btn-1:hover::after {
+            width: 100%;
+            transition-delay: 0s;
+        }
+
+        a.btn-1:hover span:first-child::before,
+        a.btn-1:hover span:first-child::after {
+            height: 100%;
+            transition-delay: 0.2s;
+        }
     </style>
 </head>
 
@@ -278,8 +344,9 @@
                     Des projections qui reflètent la réalité !
                 </h1>
                 <a href="#devis"
-                    class="inline-block bg-teal-500 text-white px-4 py-2 sm:px-6 sm:py-3 mt-3 sm:mt-4 text-sm sm:text-base hover:bg-teal-600 transition duration-300">
-                    Modéliser votre projet
+                    class="btn-1 text-white bg-teal-500 relative overflow-hidden inline-block px-4 py-2 sm:px-6 sm:py-3 mt-3 sm:mt-4 text-sm sm:text-base cursor-pointer">
+                    <span class="absolute inset-0 pointer-events-none z-0"></span> <!-- bordures -->
+                    <span class="relative z-10">Modéliser votre projet</span>
                 </a>
             </div>
 
@@ -293,8 +360,8 @@
 
                         <!-- Cadre décoratif positionné en % -->
                         <img src="./images/cadre.svg" alt="Cadre décoratif"
-           class="absolute w-[40%] bottom-[-5%] right-[-5%] pointer-events-none">
-    </div>
+                            class="absolute w-[40%] bottom-[-5%] right-[-5%] pointer-events-none">
+                    </div>
                 </div>
             </div>
 
@@ -357,7 +424,7 @@
     <section id="services" class="relative mb-8 sm:mb-16 md:mb-24 lg:mb-32 xl:mb-40">
         <!-- Bandeau rose en arrière-plan -->
         <div
-            class="absolute top-1/2 left-0 right-0 transform -translate-y-1/2 h-64 sm:h-80 md:h-96 lg:h-[400px] bg-pink-100 z-0">
+            class="absolute md:top-[57%]  xl:top-[60%] left-0 right-0 transform -translate-y-1/2 h-64 sm:h-80 md:h-[60%] lg:h-[400px] bg-pink-100 z-0">
         </div>
 
         <div class="figma-container relative z-10">
@@ -432,109 +499,119 @@
                 <!-- Carte 6 : Bouton d'appel à l'action -->
                 <div class="col-span-12 sm:col-span-6 lg:col-span-4 flex justify-center items-center">
                     <a href="#devis"
-                        class="inline-block bg-teal-500 text-white px-4 py-2 sm:px-6 sm:py-3 text-sm sm:text-base rounded hover:bg-teal-600 transition duration-300">
-                        Estimer votre projet
+                        class="btn-1 text-white bg-teal-500 relative overflow-hidden inline-block px-4 py-2 sm:px-6 sm:py-3 mt-3 sm:mt-4 text-sm sm:text-base cursor-pointer">
+                        <span class="absolute inset-0 pointer-events-none z-0"></span> <!-- bordures -->
+                        <span class="relative z-10">Estimer votre projet</span>
                     </a>
                 </div>
             </div>
     </section>
 
     <!-- 2e part -->
-<section class="relative py-8 sm:py-12 md:py-16 mb-8 sm:mb-16 md:mb-24 lg:mb-32 xl:mb-40">
-  <!-- Bandeau rose -->
-  <div
-    class="absolute inset-0 bg-pink-100 h-48 sm:h-56 md:h-64 lg:h-[300px] top-1/2 -translate-y-1/2 transform z-0">
-  </div>
-
-  <div class="figma-container relative z-10">
-    <div class="figma-grid items-center">
-      <!-- Colonne 1 -->
-      <div class="col-span-12 lg:col-span-6 flex items-center h-full">
-        <h3 class="pr-4 sm:pr-6 lg:pr-8 text-sm sm:text-base lg:text-md">
-          Confiez-nous la modélisation 3D de votre projet pour un rendu précis et adapté à vos besoins.
-          <br><br>
-          Deux options s'offrent à vous :
-        </h3>
-      </div>
-
-      <!-- Colonne 2 -->
-      <div class="col-span-12 lg:col-span-6 flex flex-col gap-8 sm:gap-10">
-        <!-- Avec texture -->
-        <div class="relative w-full">
-          <img src="./images/service-6-avec-rendu.png" alt="Modélisation 3D avec texture"
-               class="w-full rounded-none">
-          <img src="./images/cadre.svg" alt="Cadre décoratif"
-               class="absolute w-[40%] bottom-[2%] right-[-5%] pointer-events-none">
-          <p class="text-sm sm:text-base lg:text-md text-left mt-2 text-teal-500">Avec texture</p>
+    <section class="relative py-8 sm:py-12 md:py-16 mb-8 sm:mb-16 md:mb-24 lg:mb-32 xl:mb-40">
+        <!-- Bandeau rose -->
+        <div
+            class="absolute inset-0 bg-pink-100 h-48 sm:h-56 md:h-64 lg:h-[300px] top-1/2 -translate-y-1/2 transform z-0">
         </div>
 
-        <!-- Sans texture (cadre à gauche + flip vertical) -->
-        <div class="relative w-full">
-          <img src="./images/service-7-sans-rendu.png" alt="Modélisation 3D sans texture"
-               class="w-full rounded-none">
-          <img src="./images/cadre.svg" alt="Cadre décoratif"
-               class="absolute w-[40%] bottom-[2%] left-[-5%] scale-x-[-1] pointer-events-none">
-          <p class="text-sm sm:text-base lg:text-md text-right mt-2 text-teal-500">Sans texture</p>
+        <div class="figma-container relative z-10">
+            <div class="figma-grid items-center">
+                <!-- Colonne 1 -->
+                <div class="col-span-12 lg:col-span-6 flex items-center h-full">
+                    <h3 class="pr-4 sm:pr-6 lg:pr-8 text-sm sm:text-base lg:text-md">
+                        Confiez-nous la modélisation 3D de votre projet pour un rendu précis et adapté à vos besoins.
+                        <br><br>
+                        Deux options s'offrent à vous :
+                    </h3>
+                </div>
+
+                <!-- Colonne 2 -->
+                <div class="col-span-12 lg:col-span-6 flex flex-col gap-8 sm:gap-10">
+                    <!-- Avec texture -->
+                    <div class="relative w-full">
+                        <img src="./images/service-6-avec-rendu.png" alt="Modélisation 3D avec texture"
+                            class="w-full rounded-none">
+                        <img src="./images/cadre.svg" alt="Cadre décoratif"
+                            class="absolute w-[40%] bottom-[2%] right-[-5%] pointer-events-none">
+                        <p class="text-sm sm:text-base lg:text-md text-left mt-2 text-teal-500">Avec texture</p>
+                    </div>
+
+                    <!-- Sans texture (cadre à gauche + flip vertical) -->
+                    <div class="relative w-full">
+                        <img src="./images/service-7-sans-rendu.png" alt="Modélisation 3D sans texture"
+                            class="w-full rounded-none">
+                        <img src="./images/cadre.svg" alt="Cadre décoratif"
+                            class="absolute w-[40%] bottom-[2%] left-[-5%] scale-x-[-1] pointer-events-none">
+                        <p class="text-sm sm:text-base lg:text-md text-right mt-2 text-teal-500">Sans texture</p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
 
 
-<!-- Process Section -->
-<section class="relative py-8 sm:py-12 md:py-16 mb-8 sm:mb-16 md:mb-24 lg:mb-32 xl:mb-40">
-  <!-- Bandeau rose responsive -->
-  <div
-    class="absolute top-1/2 -translate-y-1/2 h-1/2 w-full bg-pink-100 z-0
+    <!-- Process Section -->
+    <section class="relative py-8 sm:py-12 md:py-16 mb-8 sm:mb-16 md:mb-24 lg:mb-32 xl:mb-40">
+        <!-- Bandeau rose responsive -->
+        <div class="absolute top-1/2 -translate-y-1/2 h-1/2 w-full bg-pink-100 z-0
            lg:top-[187px] lg:translate-y-0 lg:h-[100px]
            xl:top-[195px]">
-  </div>
+        </div>
 
-  <div class="figma-container relative z-10">
-    <!-- Titre -->
-    <h2 class="text-xl sm:text-2xl md:text-3xl text-center text-teal-500 mb-6 sm:mb-8 md:mb-10 lg:mb-12 xl:mb-14">
-      Obtenez votre modélisation 3D en seulement 3 étapes
-    </h2>
+        <div class="figma-container relative z-10">
+            <!-- Titre -->
+            <h2
+                class="text-xl sm:text-2xl md:text-3xl text-center text-teal-500 mb-6 sm:mb-8 md:mb-10 lg:mb-12 xl:mb-14">
+                Obtenez votre modélisation 3D en seulement 3 étapes
+            </h2>
 
-    <!-- Étapes -->
-    <div class="figma-grid">
-      <!-- Étape 1 -->
-      <div class="bg-white lg:bg-transparent col-span-12 lg:col-span-4 flex flex-col items-center text-center p-4 sm:p-6">
-        <img src="./images/Chiffre-1.svg" alt="Étape 1"
-             class="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 mb-3" />
-        <p class="label text-lg sm:text-xl mb-4 sm:mb-6">Demander un devis</p>
-        <p class="text-sm sm:text-base">
-          Contactez-nous en décrivant votre projet et vos besoins. Nous vous répondrons sous 24h pour une
-          solution sur mesure.
-        </p>
-      </div>
+            <!-- Étapes -->
+            <div class="figma-grid">
+                <!-- Étape 1 -->
+                <div
+                    class="bg-white lg:bg-transparent col-span-12 lg:col-span-4 flex flex-col items-center text-center p-4 sm:p-6">
+                    <img src="./images/Chiffre-1.svg" alt="Étape 1"
+                        class="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 mb-3" />
 
-      <!-- Étape 2 -->
-      <div class="bg-white lg:bg-transparent col-span-12 lg:col-span-4 flex flex-col items-center text-center p-4 sm:p-6">
-        <img src="./images/Chiffre-2.svg" alt="Étape 2"
-             class="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 mb-3" />
-        <p class="label text-lg sm:text-xl mb-4 sm:mb-6">Envoi de votre projet</p>
-        <p class="text-sm sm:text-base">
-          Une fois le devis validé, envoyez-nous vos plans, photos, mesures et toute information
-          nécessaire pour un rendu fidèle.
-        </p>
-      </div>
+                    <p class="label text-lg sm:text-xl mb-4 sm:mb-6">Demander un devis</p>
 
-      <!-- Étape 3 -->
-      <div class="bg-white lg:bg-transparent col-span-12 lg:col-span-4 flex flex-col items-center text-center p-4 sm:p-6">
-        <img src="./images/Chiffre-3.svg" alt="Étape 3"
-             class="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 mb-3" />
-        <p class="label text-lg sm:text-xl mb-4 sm:mb-6">Réception du projet</p>
-        <p class="text-sm sm:text-base">
-          Nous vous livrons votre modélisation 3D dans les délais convenus. Modifications possibles
-          jusqu'à satisfaction.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
+                    <p class="text-sm sm:text-base">
+                        Obtenez un devis personnalisé en remplissant notre
+                        <a href="#devis" class="text-teal-500 font-medium underline transition duration-200">
+                            formulaire
+                        </a>
+                        selon vos besoins spécifiques pour une solution sur mesure.
+                    </p>
+                </div>
+
+
+                <!-- Étape 2 -->
+                <div
+                    class="bg-white lg:bg-transparent col-span-12 lg:col-span-4 flex flex-col items-center text-center p-4 sm:p-6">
+                    <img src="./images/Chiffre-2.svg" alt="Étape 2"
+                        class="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 mb-3" />
+                    <p class="label text-lg sm:text-xl mb-4 sm:mb-6">Envoi de votre projet</p>
+                    <p class="text-sm sm:text-base">
+                        Discutez de votre projet 3D avec nous pour une réalisation fidèle à la réalité, en nous
+                        fournissant plans et documents nécessaires
+                    </p>
+                </div>
+
+                <!-- Étape 3 -->
+                <div
+                    class="bg-white lg:bg-transparent col-span-12 lg:col-span-4 flex flex-col items-center text-center p-4 sm:p-6">
+                    <img src="./images/Chiffre-3.svg" alt="Étape 3"
+                        class="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 mb-3" />
+                    <p class="label text-lg sm:text-xl mb-4 sm:mb-6">Réception du projet</p>
+                    <p class="text-sm sm:text-base">
+                        Recevez vos images 3D dans les délais convenus, avec des modifications gratuites jusqu'à
+                        satisfaction totale
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
 
     <!-- Realizations Section -->
@@ -576,17 +653,22 @@
                 <div class="carousel-control carousel-next">
                     <i class="fas fa-chevron-right text-teal-500"></i>
                 </div>
-                <div class="carousel-indicators">
-                    <div class="carousel-indicator active"></div>
-                    <div class="carousel-indicator"></div>
-                    <div class="carousel-indicator"></div>
-                    <div class="carousel-indicator"></div>
-                </div>
+            </div>
+            <div class="carousel-indicators">
+                <div class="carousel-indicator active"></div>
+                <div class="carousel-indicator"></div>
+                <div class="carousel-indicator"></div>
+                <div class="carousel-indicator"></div>
             </div>
 
             <div class="text-center">
-                <p class="text-sm sm:text-base mb-4">Suivez-nous sur instagram pour voir plus de modélisations 3D
-                    @3dcreation_by_salita</p>
+<p class="text-sm sm:text-base mb-4 text-center">
+  Suivez-nous sur Instagram pour voir plus de modélisations 3D<br>
+  <a href="https://www.instagram.com/3dcreation_by_salita" target="_blank" class="text-teal-500 underline hover:text-teal-700">
+    @3dcreation_by_salita
+  </a>
+</p>
+
             </div>
         </div>
     </section>
@@ -594,7 +676,7 @@
     <section class="mb-8 sm:mb-16 md:mb-24 lg:mb-32 xl:mb-40">
         <div class="grid grid-cols-1 lg:grid-cols-2">
             <div class="bg-pink-100 flex flex-col justify-center items-start p-6 sm:p-8 md:p-12 lg:p-16">
-                <h3 class="text-xl sm:text-2xl md:text-3xl lg:text-4xlmb-3 sm:mb-4">
+                <h3 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl">
                     Vous avez un projet en cours ?
                 </h3>
             </div>
@@ -604,8 +686,9 @@
                     en 3D !
                 </p>
                 <a href="#devis"
-                    class="w-max bg-teal-500 text-white px-4 py-2 sm:px-6 sm:py-3 mt-6 sm:mt-8 lg:mt-14 text-sm sm:text-base hover:bg-teal-600 transition duration-300">
-                    Demander un devis
+                    class="w-max btn-1 text-white bg-teal-500 relative overflow-hidden inline-block px-4 py-2 sm:px-6 sm:py-3 mt-3 sm:mt-4 text-sm sm:text-base cursor-pointer">
+                    <span class="absolute inset-0 pointer-events-none z-0"></span> <!-- bordures -->
+                    <span class="relative z-10">Demander un devis</span>
                 </a>
             </div>
         </div>
@@ -624,7 +707,7 @@
                         <img src="./images/photo-sarah.jpeg" alt="Fondatrice" class="w-full rounded-none">
                         <img src="./images/cadre.svg" alt="Cadre décoratif"
                             class="absolute scale-x-[-1] w-[70%] bottom-[1.5%] left-[-8%] pointer-events-none">
-                            <p class="text-sm sm:text-base lg:text-md text-right mt-2 text-teal-500">Sans texture</p>
+                        <p class="text-sm sm:text-base lg:text-md text-right mt-2 text-teal-500">Sans texture</p>
                     </div>
                 </div>
                 <div class="col-span-12 lg:col-span-8">
@@ -666,10 +749,10 @@
                 <div class="col-span-12 md:col-span-4 text-center md:text-left">
                     <h4 class="text-xl sm:text-2xl text-teal-500 mb-4 sm:mb-6">Contact</h4>
                     <p class="text-sm sm:text-base  mb-3 sm:mb-4">
-                        <i class="fas fa-envelope mr-2 text-teal-500"></i>info@3dcreationbysalita.ch
+                        info@3dcreationbysalita.ch
                     </p>
                     <p class="text-sm sm:text-base mb-6 sm:mb-8">
-                        <i class="fas fa-phone mr-2 text-teal-500"></i>+41 79 107 78 73
+                        </i>+41 79 107 78 73
                     </p>
 
                     <h4 class="text-lg sm:text-xl text-teal-500 mb-2">Horaires</h4>
@@ -684,16 +767,16 @@
                 <div class="col-span-12 md:col-span-4 text-center md:text-left">
                     <h4 class="text-xl sm:text-2xl text-teal-500 mb-4 sm:mb-6">Réseaux sociaux</h4>
                     <div class="flex space-x-4 justify-center md:justify-start">
-                        <a href="#" class="text-pink-400 hover:text-teal-700">
+                        <a href="#" class="text-pink-400 hover:text-pink-500">
                             <i class="fab fa-facebook-f text-lg sm:text-xl"></i>
                         </a>
-                        <a href="#" class="text-pink-400 hover:text-teal-700">
+                        <a href="#" class="text-pink-400 hover:text-pink-500">
                             <i class="fab fa-instagram text-lg sm:text-xl"></i>
                         </a>
-                        <a href="#" class="text-pink-400 hover:text-teal-700">
+                        <a href="#" class="text-pink-400 hover:text-pink-500">
                             <i class="fab fa-linkedin-in text-lg sm:text-xl"></i>
                         </a>
-                        <a href="#" class="text-pink-400 hover:text-teal-700">
+                        <a href="#" class="text-pink-400 hover:text-pink-500">
                             <i class="fab fa-pinterest text-lg sm:text-xl"></i>
                         </a>
                     </div>
