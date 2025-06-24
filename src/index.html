@@ -168,7 +168,7 @@
 
         /* Figma Grid System */
         .figma-container {
-            max-width: 1440px;
+            
             margin: 0 auto;
             padding-left: 3rem;
             padding-right: 3rem;
@@ -204,6 +204,13 @@
                 /* 120px */
             }
         }
+
+        @media (min-width: 1536px) {
+  .figma-container {
+    padding-left:24rem;
+    padding-right: 24rem;
+  }
+}
 
         .figma-grid {
             display: grid;
@@ -347,12 +354,12 @@
                     class="btn-1 text-white bg-teal-500 relative overflow-hidden inline-block px-4 py-2 sm:px-6 sm:py-3 mt-3 sm:mt-4 text-sm sm:text-base cursor-pointer">
                     <span class="absolute inset-0 pointer-events-none z-0"></span> <!-- bordures -->
                     <span class="relative z-10">Modéliser votre projet</span>
-                </a>
+                </a> 
             </div>
 
             <!-- Image coller à droite -->
             <div class="lg:col-span-7">
-                <div class="figma-container pl-0">
+                <div class="xs:pr-24 sm:pr-12 md:pr-20 lg:pr-16 xl:pr-16 2xl:pr-24 pl-0">
                     <!-- Wrapper image + cadre -->
                     <div class="relative w-full">
                         <img src="./images/villa-hero.png" alt="Maison 3D"
