@@ -15,6 +15,9 @@
 .relative {
   position: relative;
 }
+.sticky {
+  position: sticky;
+}
 .top-1\/2 {
   top: calc(1/2 * 100%);
 }
